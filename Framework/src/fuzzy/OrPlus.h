@@ -11,20 +11,19 @@
 
 namespace fuzzy {
 
-template <class T>
-class OrPlus:public core::Or<T>
-{
-	T Evaluate(core::Expression<T> *, core::Expression<T> *)const;
+	template <class T>
+	class OrPlus : public core::Or<T>
+	{
+	public:
+		T Evaluate(core::Expression<T> *, core::Expression<T> *) const;
+	};
 
-};
-
-template <class T>
-T OrPlus<T>::Evaluate(core::Expression<T>* left, core::Expression<T>* right)const{
-	T l=left->Evaluate();
-	T r=right->Evaluate();
-	return l+r;
-}
-
+	template <class T>
+	T OrPlus<T>::Evaluate(core::Expression<T>* left, core::Expression<T>* right)const{
+		T l=left->Evaluate();
+		T r=right->Evaluate();
+		return l+r;
+	}
 
 }
 

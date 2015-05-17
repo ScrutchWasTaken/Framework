@@ -11,18 +11,19 @@
 
 namespace fuzzy {
 
-template <class T>
-class NotMinus1: public core::Not<T>
-{
-	T Evaluate(core::Expression<T> *) const;
-};
+	template <class T>
+	class NotMinus1 : public core::Not<T>
+	{
+	public:
+		T Evaluate(core::Expression<T> *) const;
+	};
 
-template <class T>
-T NotMinus1<T>::Evaluate(core::Expression<T> *o) const {
-	T res = o->Evaluate();
-	res = 1 - res;
-	return res;
-}
+	template <class T>
+	T NotMinus1<T>::Evaluate(core::Expression<T> *o) const {
+		T res = o->Evaluate();
+		res = 1 - res;
+		return res;
+	}
 
 };
 #endif /* FUZZY_NOTMINUS1_H_ */
