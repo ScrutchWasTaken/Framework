@@ -72,10 +72,8 @@ void testBinaryShadow(){	//use factories
 	core::ValueModel<double> v1(2);
 	core::ValueModel<double> v2(3);
 	fuzzy::AndMin<double> am;
-
-
-
-
+	core::BinaryShadowExpression<double> bse(&am);
+	std::cout << bse.Evaluate(&v1,&v2) << std::endl;
 }
 
 
@@ -96,7 +94,8 @@ int main() {
 	*/
 
 	//tests à écrire pour les shadows et les factories
-
+	std::cout << "Test BinaryShadow" << std::endl;
+	testBinaryShadow();
 
 	return 0;
 }
