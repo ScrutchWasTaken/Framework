@@ -16,7 +16,7 @@ Dé fuzzyfication
 	Systeme de règle
 	La sortie à défuzzyfier
 	
-	Défuzzification Mandani
+	Défuzzification Mandan
 		Evaluer le système =
 			1. construire une forme ( c a d évaluation sur tt le discourt)
 			2. calculer un squalaire grace à la surface trouvé en 1

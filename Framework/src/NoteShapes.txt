@@ -1,21 +1,21 @@
 la classe "is" est une fonction d'appartenance retournant une valeur entre 0 et 1.
-		Fonctions d'appartenances :
-			TRIANGLE : 	   /\
-				* min	  /  \
-				* mid	 /    \
-				* max	/      \
+	Fonctions d'appartenances :
+	v	TRIANGLE : 	   /\
+			* min	  /  \
+			* mid	 /    \
+			* max	/      \
+				 min   mid	max
+	v	TRAPEZE			_____
+			* min	   /	 \
+			* mid1	  /		  \
+			* mid2	 /		   \
+			* max	/		    \
 				
-			TRAPEZE			_____
-				* min	   /	 \
-				* mid1	  /		  \
-				* mid2	 /		   \
-				* max	/		    \
-				
-			TRAPEZE Left : _____
-				* mid			\
-				* max			 \
-								  \
-			TRAPEZE Right  ______
-				* min     /
-				* mid    /
-						/
+	v	TRAPEZE Left : _____
+			* mid			\
+			* max			 \
+							  \
+	v	TRAPEZE Right  ______
+			* min     /
+			* mid    /
+				T	/
