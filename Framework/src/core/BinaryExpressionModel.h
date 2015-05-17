@@ -37,7 +37,7 @@ namespace core{
 
 	template <class T>
 	T BinaryExpressionModel<T>::Evaluate() const{
-		if(left!=NULL && right!=NULL) {
+		if(left==NULL || right==NULL) {
 			throw (std::exception());
 		}
 		return Evaluate(left,right);
@@ -45,7 +45,7 @@ namespace core{
 
 	template <class T>
 	T BinaryExpressionModel<T>::Evaluate(Expression<T>* l, Expression<T>* r) const{
-		if(operat != NULL) {
+		if(operat == NULL) {
 			throw (std::exception());
 		}
 		return operat->Evaluate(l,r);

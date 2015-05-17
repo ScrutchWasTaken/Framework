@@ -35,7 +35,7 @@ namespace core{
 
 	template <class T>
 	T UnaryExpressionModel<T>::Evaluate() const{
-		if (operan != NULL) {
+		if (operan == NULL) {
 			throw (std::exception());//nullptr -> c++ 2011
 		}
 		return Evaluate(operan);
@@ -43,7 +43,7 @@ namespace core{
 
 	template <class T>
 	T UnaryExpressionModel<T>::Evaluate(Expression<T>* o) const{
-		if(operat != NULL) {
+		if(operat == NULL) {
 			throw (std::exception());
 		}
 		return operat->Evaluate(o);	// La fleche sert comme un point mais pour un pointeur
