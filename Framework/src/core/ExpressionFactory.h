@@ -24,7 +24,7 @@ public:
 	virtual Expression<T> newBinary(BinaryExpression<T>* ope, Expression<T>* l, Expression<T>* r);
 
 private:
-	std::set<Expression<T>> memory;
+	std::set<Expression<T> > memory;
 	//Faudrait peut être gérer ça...
 
 };
@@ -42,12 +42,12 @@ Expression<T> ExpressionFactory<T>::Hold(Expression<T>* o){
 
 template <class T>
 Expression<T> ExpressionFactory<T>::newUnary(UnaryExpression<T>* ope, Expression<T>* u){
-	return new UnaryExpressionModel(ope,u);
+	return new UnaryExpressionModel<T>(ope,u);
 }
 
 template <class T>
 Expression<T> ExpressionFactory<T>::newBinary(BinaryExpression<T>* ope, Expression<T>* l, Expression<T>* r){
-	return new BinaryExpressionModel(ope,l,r);
+	return new BinaryExpressionModel<T>(ope,l,r);
 }
 
 }

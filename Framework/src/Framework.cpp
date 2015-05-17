@@ -13,6 +13,8 @@
 #include "core/BinaryExpressionModel.h"
 #include "core/BinaryShadowExpression.h"
 #include "core/UnaryShadowExpression.h"
+#include "core/ExpressionFactory.h"
+#include "fuzzy/FuzzyFactory.h"
 #include "fuzzy/NotMinus1.h"
 #include "fuzzy/AndMult.h"
 #include "fuzzy/AndMin.h"
@@ -81,6 +83,10 @@ void testUnaryShadow(){	//use factories
 	fuzzy::NotMinus1<double> nm;
 	core::UnaryShadowExpression<double> use(&nm);
 	std::cout << use.Evaluate(&v1) << std::endl;
+}
+
+void testFactory(){
+
 }
 
 int main() {

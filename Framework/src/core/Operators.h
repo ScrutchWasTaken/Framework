@@ -42,6 +42,13 @@ namespace core{
 	};
 
 	template <class T>
+	class Defuzz : public core::BinaryExpression<T>
+	{
+	public:
+		virtual T Evaluate(Expression<T>*,Expression<T>*) const = 0;
+	};
+
+	template <class T>
 	class Not : public core::UnaryExpression<T>
 	{
 	public:
@@ -54,6 +61,7 @@ namespace core{
 	public:
 		virtual T Evaluate(Expression<T>*) const = 0;
 	};
+
 
 }
 #endif /* OPERATORS_H_ */
