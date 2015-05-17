@@ -19,9 +19,9 @@ class ExpressionFactory
 public:
 	ExpressionFactory();
 	virtual ~ExpressionFactory(){}
-	virtual Expression<T> Hold(Expression<T>* o);
-	virtual Expression<T> newUnary(UnaryExpression<T>* ope,Expression<T>* o);
-	virtual Expression<T> newBinary(BinaryExpression<T>* ope, Expression<T>* l, Expression<T>* r);
+	virtual Expression<T>* Hold(Expression<T>* o);
+	virtual UnaryExpressionModel<T>* newUnary(UnaryExpression<T>* ope,Expression<T>* o);
+	virtual BinaryExpressionModel<T>* newBinary(BinaryExpression<T>* ope, Expression<T>* l, Expression<T>* r);
 
 private:
 	std::set<Expression<T> > memory;
@@ -36,17 +36,17 @@ memory(memory)
 }
 
 template <class T>
-Expression<T> ExpressionFactory<T>::Hold(Expression<T>* o){
+Expression<T>* ExpressionFactory<T>::Hold(Expression<T>* o){
 	return o;
 }
 
 template <class T>
-Expression<T> ExpressionFactory<T>::newUnary(UnaryExpression<T>* ope, Expression<T>* u){
+UnaryExpressionModel<T>* ExpressionFactory<T>::newUnary(UnaryExpression<T>* ope, Expression<T>* u){
 	return new UnaryExpressionModel<T>(ope,u);
 }
 
 template <class T>
-Expression<T> ExpressionFactory<T>::newBinary(BinaryExpression<T>* ope, Expression<T>* l, Expression<T>* r){
+BinaryExpressionModel<T>* ExpressionFactory<T>::newBinary(BinaryExpression<T>* ope, Expression<T>* l, Expression<T>* r){
 	return new BinaryExpressionModel<T>(ope,l,r);
 }
 

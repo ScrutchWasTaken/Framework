@@ -13,13 +13,19 @@
 #include "core/BinaryExpressionModel.h"
 #include "core/BinaryShadowExpression.h"
 #include "core/UnaryShadowExpression.h"
+
 #include "core/ExpressionFactory.h"
 #include "fuzzy/FuzzyFactory.h"
-#include "fuzzy/NotMinus1.h"
+
+#include "fuzzy/AggMax.h"
+#include "fuzzy/AggPlus.h"
 #include "fuzzy/AndMult.h"
 #include "fuzzy/AndMin.h"
+#include "fuzzy/NotMinus1.h"
 #include "fuzzy/OrMax.h"
 #include "fuzzy/OrPlus.h"
+#include "fuzzy/ThenMin.h"
+#include "fuzzy/ThenMult.h"
 
 void testValueModel(){
 	//test de ValueModel
@@ -86,6 +92,15 @@ void testUnaryShadow(){	//use factories
 }
 
 void testFactory(){
+	core::ValueModel<double> v1(2);
+	core::ValueModel<double> v2(3);
+	fuzzy::NotMinus1<double> opNot;
+	fuzzy::AndMin<double> opAnd;
+	fuzzy::OrMax<double> opOr;
+	fuzzy::ThenMin<double> opThen;
+	fuzzy::AggMax<double> opAgg;
+
+	fuzzy::FuzzyFactory<double> f(&opNot,&opAnd,&opOr, &opThen, &opAgg, NULL);
 
 }
 
