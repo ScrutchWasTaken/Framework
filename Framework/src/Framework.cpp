@@ -84,7 +84,7 @@ void testUnaryShadow(){	//use factories
 }
 
 int main() {
-	/*
+
 	std::cout << "Test ValueModel" << std::endl;
 	testValueModel();
 	std::cout << "Test NotMinus" << std::endl;
@@ -97,7 +97,7 @@ int main() {
 	testOrMax();
 	std::cout << "Test OrPlus" << std::endl;
 	testOrPlus();
-	*/
+
 
 	//tests à écrire pour les shadows et les factories
 	std::cout << "Test BinaryShadow" << std::endl;
