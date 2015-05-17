@@ -1,0 +1,35 @@
+Mandani : Flou Flou (proposition  conséquence)
+
+Une fois que Mandani foncitonnne il faut étendre le Framwork à Sugeno
+
+Sugeno : 	SLIDE 31/32
+	la partie conséquence est une combinaison linéaire des entrée (ax + b)
+	Donc quelque soit le nombre d'entrée je doit pouvoir avoir la conséquence associé
+	
+	Voir cours de logique flou au besoin
+	
+	
+	NaryExpression : expression à N argument
+	
+	SugenoThen : proche de ThenMult mais ici pour une raison technique.
+		Il doit garder le dernière premise évalué afin de calculer le suivant.
+		
+		0
+		 \
+		  0
+		 / \
+		0	0
+		   / \
+		  0	  0
+		  
+	/!\ Démonstration != Test
+	Donc il faut faire une petite application qui permet de montrer que notre Framework fonctionne
+	
+	Critère d'évaluation
+		Ca marche ou pas ?
+		C'est beau ou pas ?	-> pas trop de sens ici.
+		Quelle sont vos connaissances ?
+		Est ce que vous avez travaillé ?
+		Comment qu'il est le rapport ? (format papier)
+		
+	DEADLINE : Mardi 12 Mai - 15 mins/binomes	
