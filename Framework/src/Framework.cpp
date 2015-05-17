@@ -76,6 +76,12 @@ void testBinaryShadow(){	//use factories
 	std::cout << bse.Evaluate(&v1,&v2) << std::endl;
 }
 
+void testUnaryShadow(){	//use factories
+	core::ValueModel<double> v1(0.7);
+	fuzzy::NotMinus1<double> nm;
+	core::UnaryShadowExpression<double> use(&nm);
+	std::cout << use.Evaluate(&v1) << std::endl;
+}
 
 int main() {
 	/*
@@ -96,6 +102,9 @@ int main() {
 	//tests à écrire pour les shadows et les factories
 	std::cout << "Test BinaryShadow" << std::endl;
 	testBinaryShadow();
+	std::cout << "Test UnaryShadow" << std::endl;
+	testUnaryShadow();
+
 
 	return 0;
 }
