@@ -38,66 +38,71 @@ public:
 	virtual void changeIs(core::Is<T>*);
 
 private:
-	core::BinaryShadowExpression<T>* _and, _or, then, agg, defuzz;
-	core::UnaryShadowExpression<T>* _not, is;
+	core::BinaryShadowExpression<T>* opAnd;
+	core::BinaryShadowExpression<T>* opOr;
+	core::BinaryShadowExpression<T>* then;
+	core::BinaryShadowExpression<T>* agg;
+	core::BinaryShadowExpression<T>* defuzz;
+	core::UnaryShadowExpression<T>* opNot;
+	core::UnaryShadowExpression<T>* is;
 };
 
 template <class T>
 FuzzyFactory<T>::FuzzyFactory(core::UnaryExpression<T>* not_, core::BinaryExpression<T>* and_,core::BinaryExpression<T>* or_,
 		core::BinaryExpression<T>* then_,core::BinaryExpression<T>* agg_,core::BinaryExpression<T>* defuzz_):
-		_not(new core::UnaryShadowExpression<T>(not_)),_and(new core::BinaryShadowExpression<T>(and_)),
-		_or(new core::BinaryShadowExpression<T>(or_)),then(new core::BinaryShadowExpression<T>(then_)),
+		opNot(new core::UnaryShadowExpression<T>(not_)),opAnd(new core::BinaryShadowExpression<T>(and_)),
+		opOr(new core::BinaryShadowExpression<T>(or_)),then(new core::BinaryShadowExpression<T>(then_)),
 		agg(new core::BinaryShadowExpression<T>(agg_)),defuzz(new core::BinaryShadowExpression<T>(defuzz_))
 {}
 
 template <class T>
 core::BinaryExpressionModel<T>* FuzzyFactory<T>::newAnd(core::Expression<T>* l, core::Expression<T>* r){
-	return newBinary(_and, l,r);
+	return core::ExpressionFactory<T>::newBinary(opAnd, l,r);
 }
 
 template <class T>
 core::BinaryExpressionModel<T>* FuzzyFactory<T>::newOr(core::Expression<T>* l, core::Expression<T>* r){
-	return newBinary(_or, l,r);
+	return core::ExpressionFactory<T>::newBinary(opOr, l,r);
 }
 
 template <class T>
 core::BinaryExpressionModel<T>* FuzzyFactory<T>::newThen(core::Expression<T>* l, core::Expression<T>* r){
-	return newBinary(then, l,r);
+	return core::ExpressionFactory<T>::newBinary(then, l,r);
 }
 
 template <class T>
 core::BinaryExpressionModel<T>* FuzzyFactory<T>::newAgg(core::Expression<T>* l, core::Expression<T>* r){
-	return newBinary(agg, l,r);
+	return core::ExpressionFactory<T>::newBinary(agg, l,r);
 }
 
 template <class T>
 core::BinaryExpressionModel<T>* FuzzyFactory<T>::newDefuzz(core::Expression<T>* l, core::Expression<T>* r){
-	return newBinary(defuzz, l,r);
+	return core::ExpressionFactory<T>::newBinary(defuzz, l,r);
 }
 
 template <class T>
 core::UnaryExpressionModel<T>* FuzzyFactory<T>::newNot(core::Expression<T>* o){
-	return newUnary(_not, o);
+	return core::ExpressionFactory<T>::newUnary(opNot, o);
 }
 
 template <class T>
 core::UnaryExpressionModel<T>* FuzzyFactory<T>::newIs(core::Is<T>* s,core::Expression<T>* o){
-	return newUnary(s, o);
+	return core::ExpressionFactory<T>::newUnary(s, o);
 }
 
 template <class T>
 void FuzzyFactory<T>::changeAnd(core::And<T>* and_){
-	_and->setTarget(and_);
+	opAnd->setTarget(and_);
 }
 
 template <class T>
 void FuzzyFactory<T>::changeOr(core::Or<T>* or_){
-	_or->setTarget(or_);
+	opOr->setTarget(or_);
 }
 
 template <class T>
 void FuzzyFactory<T>::changeNot(core::Not<T>* not_){
-	_not->setTarget(not_);
+	opNot->setTarget(not_);
 }
 
 template <class T>
@@ -119,8 +124,6 @@ template <class T>
 void FuzzyFactory<T>::changeIs(core::Is<T>* is_){
 	is->setTarget(is_);
 }
-
-
 
 
 }

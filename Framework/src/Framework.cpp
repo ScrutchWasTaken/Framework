@@ -21,6 +21,7 @@
 #include "fuzzy/AggPlus.h"
 #include "fuzzy/AndMult.h"
 #include "fuzzy/AndMin.h"
+#include "core/IsTriangle.h"
 #include "fuzzy/NotMinus1.h"
 #include "fuzzy/OrMax.h"
 #include "fuzzy/OrPlus.h"
@@ -100,6 +101,7 @@ void testFactory(){
 	fuzzy::ThenMin<double> opThen;
 	fuzzy::AggMax<double> opAgg;
 
+
 	fuzzy::FuzzyFactory<double> f(&opNot,&opAnd,&opOr, &opThen, &opAgg, NULL);
 
 }
@@ -125,7 +127,8 @@ int main() {
 	testBinaryShadow();
 	std::cout << "Test UnaryShadow" << std::endl;
 	testUnaryShadow();
-
+	std::cout << "Test Factory" << std::endl;
+	testFactory();
 
 	return 0;
 }
