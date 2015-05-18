@@ -19,6 +19,10 @@ namespace fuzzy {
 	class FuzzyFactory: public core::ExpressionFactory<T>
 	{
 	public:
+		/*
+		 * On dit quel type d'opérateur va être utilisé
+		 * 		Not, And, Or, Then, Agg, Defuzz
+		 */
 		FuzzyFactory(core::UnaryExpression<T>*, core::BinaryExpression<T>*,core::BinaryExpression<T>*,
 				core::BinaryExpression<T>*,core::BinaryExpression<T>*,core::BinaryExpression<T>*);
 		virtual ~FuzzyFactory(){}
