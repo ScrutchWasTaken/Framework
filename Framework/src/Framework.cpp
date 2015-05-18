@@ -67,56 +67,6 @@ void testUnaryShadow(){	//use factories
 	std::cout << use.Evaluate(&v1) << std::endl;
 }
 
-
-
-void testFactory(){
-	ValueModel<double> v1(2);
-	ValueModel<double> v2(3);
-	NotMinus1<double> opNot;
-	AndMin<double> opAnd;
-	OrMax<double> opOr;
-	ThenMin<double> opThen;
-	AggMax<double> opAgg;
-	//CogDefuzz<double> opDefuzz(0,40,1);
-
-
-	FuzzyFactory<double> fifou(&opNot,&opAnd,&opOr, &opThen, &opAgg, NULL);
-
-
-	double minMauvais=0;
-	double midMauvais=10;
-	double maxMauvais=20;
-	IsTriangle<double> mauvais(minMauvais,midMauvais,maxMauvais);
-
-	double minMoyen=10;
-	double midMoyen=20;
-	double maxMoyen=30;
-	IsTriangle<double> moyen(minMoyen,midMoyen,maxMoyen);
-
-	double minBon=20;
-	double midBon=30;
-	double maxBon=40;
-	IsTriangle<double> bon(minBon,midBon,maxBon);
-
-	double minMauvaises=0;
-	double midMauvaises=10;
-	double maxMauvaises=20;
-	IsTriangle<double> mauvaises(minMauvaises,midMauvaises,maxMauvaises);
-
-	double minMoyennes=10;
-	double midMoyennes=20;
-	double maxMoyennes=30;
-	IsTriangle<double> moyennes(minMoyennes,midMoyennes,maxMoyennes);
-
-	double minBonnes=20;
-	double midBonnes=30;
-	double maxBonnes=40;
-	IsTriangle<double> bonnes(minBonnes,midBonnes,maxBonnes);
-
-	ValueModel<double> scenario(0);
-	ValueModel<double> critiques(0);
-
-}
 void testCours(){
 	NotMinus1<double> opNot;
 	AndMin<double> opAnd;
