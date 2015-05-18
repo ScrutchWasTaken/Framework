@@ -98,6 +98,8 @@ void testUnaryShadow(){	//use factories
 	std::cout << use.Evaluate(&v1) << std::endl;
 }
 
+
+
 void testFactory(){
 	core::ValueModel<double> v1(2);
 	core::ValueModel<double> v2(3);
@@ -106,10 +108,10 @@ void testFactory(){
 	fuzzy::OrMax<double> opOr;
 	fuzzy::ThenMin<double> opThen;
 	fuzzy::AggMax<double> opAgg;
-	//fuzzy::Co
+	//fuzzy::CogDefuzz<double> opDefuzz(0,40,1);
 
 
-	fuzzy::FuzzyFactory<double> f(&opNot,&opAnd,&opOr, &opThen, &opAgg, NULL);
+	fuzzy::FuzzyFactory<double> fifou(&opNot,&opAnd,&opOr, &opThen, &opAgg, NULL);
 
 }
 
@@ -129,7 +131,8 @@ int main() {
 	testOrPlus();
 
 
-	//tests à écrire pour les shadows et les factories
+	//tests à écrire pour les then, agg, defuzz
+
 	std::cout << "Test BinaryShadow" << std::endl;
 	testBinaryShadow();
 	std::cout << "Test UnaryShadow" << std::endl;

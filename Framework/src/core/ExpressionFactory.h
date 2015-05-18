@@ -9,6 +9,7 @@
 #define CORE_EXPRESSIONFACTORY_H_
 #include "UnaryExpressionModel.h"
 #include "BinaryExpressionModel.h"
+#include "Expression.h"
 #include <set>
 
 namespace core {
@@ -24,7 +25,7 @@ public:
 	virtual BinaryExpressionModel<T>* newBinary(BinaryExpression<T>* ope, Expression<T>* l, Expression<T>* r);
 
 private:
-	std::set<Expression<T> > memory;
+	std::set<core::Expression<T>* > memory;
 	//Faudrait peut être gérer ça...
 
 };
@@ -37,6 +38,7 @@ memory(memory)
 
 template <class T>
 Expression<T>* ExpressionFactory<T>::Hold(Expression<T>* o){
+	memory.insert(o);
 	return o;
 }
 
