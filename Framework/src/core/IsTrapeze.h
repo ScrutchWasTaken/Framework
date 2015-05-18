@@ -37,7 +37,7 @@ namespace core {
 
 		if(sol<= min || sol >= max){
 			return 0 ;
-		} else if (sol >= mid1 && sold <= mid2) {
+		} else if (sol >= mid1 && sol <= mid2) {
 			return 1 ;
 
 		} else{			// % d'appartennance
