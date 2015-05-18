@@ -16,7 +16,7 @@ namespace core {
 
 	private:
 		T min;
-		T mmid;
+		T mid;
 
 	public:
 		IsTrapezeRight(T&, T&);
@@ -29,7 +29,7 @@ namespace core {
 		min(_min), mid(_mid) { }
 
 	template <class T>
-	T IsTrapezeLeft<T>::Evaluate(Expression<T>* e) const {
+	T IsTrapezeRight<T>::Evaluate(Expression<T>* e) const {
 		T sol = e -> Evaluate();
 
 		if(sol>= mid) {
