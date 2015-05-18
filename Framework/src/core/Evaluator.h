@@ -16,11 +16,6 @@ namespace core {
 	template <class T>
 	class Evaluator {
 	public:
-		class EvalFunc {
-		public:
-			virtual T operator () (const T&) = 0;
-		};
-
 		typedef std::pair< std::vector<T>, std::vector<T> > Shape;
 
 		static Shape BuildShape(const T& min, const T& max, const T& step, ValueModel<T>*, Expression<T>*);
