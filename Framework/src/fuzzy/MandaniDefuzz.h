@@ -26,7 +26,7 @@ namespace fuzzy {
 	public:
 		MandaniDefuzz(const T&, const T&, const T&);
 
-		T Evaluate(Expression<T>* l, Expression<T>* r) const;
+		T Evaluate(core::Expression<T>*, core::Expression<T>*) const;
 
 		virtual T defuzz(const typename core::Evaluator<T>::Shape&) const = 0;
 
@@ -39,8 +39,8 @@ namespace fuzzy {
 	}
 
 	template <class T>
-	T MandaniDefuzz<T>::Evaluate(Expression<T>* l, Expression<T>* r) const {
-		return deffuz( core::Evaluator<T>::BuildShape(min, max, step, (ValueModel<T>*)s,r));
+	T MandaniDefuzz<T>::Evaluate(core::Expression<T>* l, core::Expression<T>* r) const {
+		return defuzz(core::Evaluator<T>::BuildShape(min, max, step, (core::ValueModel<T>*)l,r));
 
 	}
 
