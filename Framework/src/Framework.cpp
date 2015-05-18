@@ -113,10 +113,150 @@ void testFactory(){
 
 	fuzzy::FuzzyFactory<double> fifou(&opNot,&opAnd,&opOr, &opThen, &opAgg, NULL);
 
+
+	double minMauvais=0;
+	double midMauvais=10;
+	double maxMauvais=20;
+	core::IsTriangle<double> mauvais(minMauvais,midMauvais,maxMauvais);
+
+	double minMoyen=10;
+	double midMoyen=20;
+	double maxMoyen=30;
+	core::IsTriangle<double> moyen(minMoyen,midMoyen,maxMoyen);
+
+	double minBon=20;
+	double midBon=30;
+	double maxBon=40;
+	core::IsTriangle<double> bon(minBon,midBon,maxBon);
+
+	double minMauvaises=0;
+	double midMauvaises=10;
+	double maxMauvaises=20;
+	core::IsTriangle<double> mauvaises(minMauvaises,midMauvaises,maxMauvaises);
+
+	double minMoyennes=10;
+	double midMoyennes=20;
+	double maxMoyennes=30;
+	core::IsTriangle<double> moyennes(minMoyennes,midMoyennes,maxMoyennes);
+
+	double minBonnes=20;
+	double midBonnes=30;
+	double maxBonnes=40;
+	core::IsTriangle<double> bonnes(minBonnes,midBonnes,maxBonnes);
+
+	core::ValueModel<double> scenario(0);
+	core::ValueModel<double> critiques(0);
+
+}
+void testCours(){
+	fuzzy::NotMinus1<double> opNot;
+	fuzzy::AndMin<double> opAnd;
+	fuzzy::OrMax<double> opOr;
+	fuzzy::ThenMin<double> opThen;
+	fuzzy::AggMax<double> opAgg;
+	fuzzy::CogDefuzz<double> opDefuzz(0,40,1);
+
+	fuzzy::FuzzyFactory<double> f(&opNot,&opAnd,&opOr,&opThen,&opAgg,&opDefuzz);
+
+	double min1=-5, min2=0, min3=5, min4=0, min5=10, min6=20;
+	double mid1=0, mid2=5, mid3=10, mid4=5, mid5=15, mid6=25;
+	double max1=5, max2=10, max3=15, max4=10, max5=20, max6=30;
+
+	core::IsTriangle<double> poor(min1,mid1,max1);
+	core::IsTriangle<double> good(min2,mid2,max2);
+	core::IsTriangle<double> excellent(min3,mid3,max3);
+
+	core::IsTriangle<double> cheap(min4,mid4,max4);
+	core::IsTriangle<double> average(min5,mid5,max5);
+	core::IsTriangle<double> generous(min6,mid6,max6);
+
+	core::ValueModel<double> service(0);
+	core::ValueModel<double> tips(0);
+
+	core::Expression<T> *r = f.newAgg(f.newAgg(f.newThen(f.newIs(&service,&poor),f.newIs(&tips,&cheap)),
+	f.newThen(f.newIs(&service,&good),f.newIs(&tips,&average))),f.newThen(f.newIs(&service,&excellent),f.newIs(&tips,&generous)));
+
+}
+void testYOLO(){
+	fuzzy::NotMinus1<double> opNot;
+	fuzzy::AndMin<double> opAnd;
+	fuzzy::OrMax<double> opOr;
+	fuzzy::ThenMin<double> opThen;
+	fuzzy::AggMax<double> opAgg;
+	fuzzy::CogDefuzz<double> opDefuzz(0,40,1);
+
+	fuzzy::FuzzyFactory<double> f(&opNot,&opAnd,&opOr,&opThen,&opAgg,&opDefuzz);
+
+		double minMauvais=0;
+		double midMauvais=10;
+		double maxMauvais=20;
+		core::IsTriangle<double> mauvais(minMauvais,midMauvais,maxMauvais);
+
+		double minMoyen=10;
+		double midMoyen=20;
+		double maxMoyen=30;
+		core::IsTriangle<double> moyen(minMoyen,midMoyen,maxMoyen);
+
+		double minBon=20;
+		double midBon=30;
+		double maxBon=40;
+		core::IsTriangle<double> bon(minBon,midBon,maxBon);
+
+		double minMauvaises=0;
+		double midMauvaises=10;
+		double maxMauvaises=20;
+		core::IsTriangle<double> mauvaises(minMauvaises,midMauvaises,maxMauvaises);
+
+		double minMoyennes=10;
+		double midMoyennes=20;
+		double maxMoyennes=30;
+		core::IsTriangle<double> moyennes(minMoyennes,midMoyennes,maxMoyennes);
+
+		double minBonnes=20;
+		double midBonnes=30;
+		double maxBonnes=40;
+		core::IsTriangle<double> bonnes(minBonnes,midBonnes,maxBonnes);
+
+
+		core::ValueModel<double> scenario(0);
+		core::ValueModel<double> critiques(0);
+
+
+
+		core::Expression<double>* r=
+			f.newAgg(
+				f.newAgg(
+					f.newThen(
+						f.newIs(&mauvais,&scenario),
+						f.newIs(&mauvaises,&critiques)
+					),
+					f.newThen(
+						f.newIs(&moyen,&scenario),
+						f.newIs(&moyennes,&critiques)
+					)
+				),
+				f.newThen(
+					f.newIs(&bon,&scenario),
+					f.newIs(&bonnes,&critiques)
+				)
+			);
+
+		core::Expression<double>* system=f.newDefuzz(&critiques,r);
+
+		double s;
+		while(true){
+			std::cout<<"scenario :";
+			std::cin>>s;
+			scenario.setValue(s);
+			std::cout<<"critiques ->"<<system->Evaluate()<<std::endl;
+		}
+
+		std::cin.ignore();
+
 }
 
 int main() {
-
+/*
 	std::cout << "Test ValueModel" << std::endl;
 	testValueModel();
 	std::cout << "Test NotMinus" << std::endl;
@@ -137,8 +277,10 @@ int main() {
 	testBinaryShadow();
 	std::cout << "Test UnaryShadow" << std::endl;
 	testUnaryShadow();
-	std::cout << "Test Factory" << std::endl;
-	testFactory();
+	std::cout << "Test Factory" << std::endl;*/
+	//testFactory();
+	//testYOLO();
+	testCours();
 
 	return 0;
 }
