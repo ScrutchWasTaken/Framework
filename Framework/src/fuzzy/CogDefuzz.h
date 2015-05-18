@@ -47,6 +47,8 @@ namespace fuzzy {
 			num+=x*y;
 			den+=y;
 		}
+		if(den==0)
+			throw std::exception();
 		return num/den;
 	}
 }

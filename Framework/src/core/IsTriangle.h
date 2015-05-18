@@ -32,7 +32,7 @@ namespace core {
 	T IsTriangle<T>::Evaluate(Expression<T>* e) const {
 		T sol = e -> Evaluate();
 
-		if(sol<= min || sol >= max){	// Hors du triangle
+		if(sol< min || sol > max){	// Hors du triangle
 			return 0 ;
 		} else {			// % d'appartennance
 			if(sol<=mid)

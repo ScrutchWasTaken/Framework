@@ -154,7 +154,7 @@ void testCours(){
 	fuzzy::OrMax<double> opOr;
 	fuzzy::ThenMin<double> opThen;
 	fuzzy::AggMax<double> opAgg;
-	fuzzy::CogDefuzz<double> opDefuzz(0,40,1);
+	fuzzy::CogDefuzz<double> opDefuzz(0,25,1);
 
 	fuzzy::FuzzyFactory<double> f(&opNot,&opAnd,&opOr,&opThen,&opAgg,&opDefuzz);
 
@@ -173,9 +173,21 @@ void testCours(){
 	core::ValueModel<double> service(0);
 	core::ValueModel<double> tips(0);
 
-	core::Expression<T> *r = f.newAgg(f.newAgg(f.newThen(f.newIs(&service,&poor),f.newIs(&tips,&cheap)),
-	f.newThen(f.newIs(&service,&good),f.newIs(&tips,&average))),f.newThen(f.newIs(&service,&excellent),f.newIs(&tips,&generous)));
+	core::Expression<double> *r = f.newAgg(f.newAgg(f.newThen(f.newIs(&poor,&service),f.newIs(&cheap,&tips)),
+	f.newThen(f.newIs(&good,&service),f.newIs(&average,&tips))),f.newThen(f.newIs(&excellent,&service),f.newIs(&generous,&tips)));
 
+	//defuzzification
+	core::Expression<double> *system = f.newDefuzz(&tips, r);
+
+	//apply input
+	float s;
+	while(true)
+	{
+	std::cout << "service : ";
+	std::cin >> s;
+	service.setValue(s);
+	std::cout << "tips -> " << system->Evaluate() << std::endl;
+	}
 }
 void testYOLO(){
 	fuzzy::NotMinus1<double> opNot;
