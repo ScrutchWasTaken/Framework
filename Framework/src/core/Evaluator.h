@@ -23,6 +23,11 @@ namespace core {
 
 	};
 
+	/*
+	 * Construit la forme finale suivant la méthode choisi (min-max)
+	 * 	v : la sortie
+	 *  e : le système de règle
+	 */
 	template <class T>
 	typename Evaluator<T>::Shape Evaluator<T>::BuildShape(const T& min, const T& max, const T& step, ValueModel<T>* v, Expression<T>* e) {
 		std::vector<T> x , y;
@@ -30,12 +35,16 @@ namespace core {
 
 		for(T i = min ; i<= max ; i += step) {
 			v->setValue(i);
-			y.push_back(i);
-			x.push_back(e->Evaluate());
+			x.push_back(i);
+			y.push_back(e->Evaluate());
 		}
+		v->setValue(mem);	// on rend sa valeur init à v
 		return Shape(x, y);
 	}
 
+	/*
+	 * Gestion de l'affichage
+	 */
 	template <class T>
 	std::ostream& Evaluator<T>::PrintShape(std::ostream& os, const Shape& s) {
 		os << '[';

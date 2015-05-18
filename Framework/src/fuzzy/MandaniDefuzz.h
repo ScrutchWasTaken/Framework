@@ -38,10 +38,15 @@ namespace fuzzy {
 
 	}
 
+	/*
+	 *  La partie gauche l de l'Expression est la valeur que l'on souhaite défuzzifier
+	 *  La partie droite r est l'ensemble de règle qui permet de défuzzifier
+	 *
+	 *  defuzz dépend du type de défuzz que l'on à choisi (centre de gravité : Min-Max) etc.
+	 */
 	template <class T>
 	T MandaniDefuzz<T>::Evaluate(core::Expression<T>* l, core::Expression<T>* r) const {
 		return defuzz(core::Evaluator<T>::BuildShape(min, max, step, (core::ValueModel<T>*)l,r));
-
 	}
 
 }
